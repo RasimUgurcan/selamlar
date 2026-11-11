@@ -1,0 +1,16 @@
+{
+  "aciklama": "Face 1 -> Face 4K: aynı kumaş, artan çözünürlük. Kanalın 'Face N' serisinin devamı.",
+  "resolution": [1080, 1920],
+  "fps": 30,
+  "samples": 64,
+  "watermark": "Kufi Animation",
+  "model": null,
+  "model_height": 1.9,
+  "clips": [
+    {"grid": 1,  "seconds": 2.5, "bg": "#E3B126", "sheet_color": "#E8342E"},
+    {"grid": 2,  "seconds": 2.5, "bg": "#8E2A3A", "sheet_color": "#A6D43A"},
+    {"grid": 8,  "seconds": 3.0, "bg": "#2E6F8E", "sheet_color": "#F2A541"},
+    {"grid": 32, "seconds": 3.5, "bg": "#E3B126", "sheet_color": "#7B3FE4"},
+    {"grid": 64, "seconds": 4.0, "bg": "#1D1D1F", "sheet_color": "#E8342E"}
+  ]
+}

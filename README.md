@@ -1,5 +1,7 @@
 # selamlar: kodla animasyon kaynakları
 
+> **Kanal için asıl araç: [`kufi/`](kufi/).** Blender ile "Face N" kumaş simülasyonu Short'ları üretir.
+
 YouTube animasyon kanalındaki Shorts videolarının devamını üretmek için toplanmış açık kaynak projeler.
 
 Liste, [@theozguratillay'ın X gönderisinden](https://x.com/theozguratillay/status/2117165062125215871) alındı. Repoların hepsi `kaynaklar/` klasöründe submodule olarak duruyor.
