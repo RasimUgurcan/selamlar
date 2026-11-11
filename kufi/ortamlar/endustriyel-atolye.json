@@ -1,0 +1,168 @@
+{
+  "ad": "Endüstriyel Atölye",
+  "konsept": "Eski bir makine atölyesi: tozlu beton zemin, fıçılar, takım dolapları; tavandan sarkan tek lamba karakteri aydınlatıyor.",
+  "hdri": "machine_shop_02",
+  "hdri_guc": 0.5,
+  "hdri_donus": 200,
+  "zemin": {
+    "doku": "concrete_floor_worn_001",
+    "olcek": 2.5,
+    "puruzluluk": 0.7
+  },
+  "podyum": {
+    "tip": "kaide",
+    "doku": "metal_plate",
+    "yaricap": 1.75,
+    "yukseklik": 0.12,
+    "olcek": 1.2,
+    "metal": 0.8
+  },
+  "dekor": [
+    {
+      "model": "wooden_barrels_01",
+      "konum": [
+        -2.4,
+        2.6,
+        0
+      ],
+      "don": 20
+    },
+    {
+      "model": "metal_tool_chest",
+      "konum": [
+        2.3,
+        2.4,
+        0
+      ],
+      "don": -25
+    },
+    {
+      "model": "wooden_crate_01",
+      "konum": [
+        -1.9,
+        4.8,
+        0
+      ],
+      "don": 10
+    },
+    {
+      "model": "wooden_crate_02",
+      "konum": [
+        -1.7,
+        4.6,
+        0.6
+      ],
+      "don": -15
+    },
+    {
+      "model": "hanging_industrial_lamp",
+      "konum": [
+        0,
+        0.2,
+        4.6
+      ],
+      "don": 0
+    },
+    {
+      "model": "old_tyre",
+      "konum": [
+        -1.6,
+        1.4,
+        0
+      ],
+      "don": 60
+    },
+    {
+      "model": "old_drill_press",
+      "konum": [
+        1.7,
+        4.6,
+        0
+      ],
+      "don": -20
+    }
+  ],
+  "isiklar": [
+    {
+      "tip": "spot",
+      "konum": [
+        0,
+        0.2,
+        4.4
+      ],
+      "hedef": [
+        0,
+        0,
+        0
+      ],
+      "guc": 2600,
+      "renk": "#FFC680",
+      "aci": 55,
+      "boyut": 0.15
+    },
+    {
+      "tip": "alan",
+      "konum": [
+        3.5,
+        -5,
+        3
+      ],
+      "hedef": [
+        0,
+        0,
+        1.4
+      ],
+      "guc": 350,
+      "renk": "#BFD4FF",
+      "boyut": 4
+    }
+  ],
+  "kamera": {
+    "lens": 50,
+    "konum": [
+      0,
+      -10.2,
+      3.0
+    ],
+    "hedef": [
+      0,
+      0,
+      1.45
+    ],
+    "f_stop": 2.2,
+    "dolly": 0.06
+  },
+  "renk_yonetimi": {
+    "donusum": "AgX",
+    "gorunum": "Medium High Contrast",
+    "pozlama": 0.0
+  },
+  "duvarlar": {
+    "doku": "brick_4",
+    "olcek": 2.0,
+    "uzaklik": 6.4,
+    "genislik": 14,
+    "yukseklik": 9,
+    "yanlar": false,
+    "pencereler": [
+      {
+        "x": 0,
+        "z": 3.9,
+        "en": 3.0,
+        "boy": 3.6,
+        "renk": "#FFE2B0",
+        "guc": 2500,
+        "manzara": "#F1DDB4",
+        "manzara_guc": 3.0,
+        "kayit": true,
+        "kayit_renk": "#1E2226",
+        "dikey": 4,
+        "yatay": 4
+      }
+    ]
+  },
+  "sis": {
+    "yogunluk": 0.006,
+    "renk": "#FFFFFF"
+  }
+}

@@ -56,6 +56,44 @@ Elindeki karakter modellerini (Villager, Golem, Cat gibi) `kufi/modeller/` klas�
 
 > 1M yüzlü (grid 1000) kumaş çok ağırdır: güçlü bir bilgisayar ve saatler gerekir. 64–128 arası değerler hızlıdır ve yine çok iyi görünür.
 
+## Sinematik ortamlar (her video ayrı bir dünya)
+
+Düz renkli fon yerine bölüm dosyasına bir ortam adı yaz:
+
+```json
+"ortam": "gotik-kutuphane"
+```
+
+Bir ortamı hızlıca denemek için video yerine tek bir "stil karesi" al (yaklaşık 20 saniye sürer):
+
+```bash
+blender -b -P kufi_short.py -- bolumler/ortam-deneme.json --onizleme --kare 70 --ortam neon-kemerler
+```
+
+Hazır ortamlar `ortamlar/` klasöründe:
+
+| Ortam | Konsept |
+|---|---|
+| `gotik-kutuphane` | Gece, mum ışığında antika kütüphane: parke zemin, kitaplıklar, gotik dolap, mermer büst, avize, ay ışığı alan pencere |
+| `endustriyel-atolye` | Tuğla duvarlı eski atölye: fabrika penceresi, havada toz, fıçılar, sandıklar, matkap tezgâhı, sarkan lamba |
+| `neon-kemerler` | Soyut rüya koridoru: sonsuz kemerler, neon halkalar, havada süzülen şekiller, ayna gibi zemin |
+
+Bir ortam dosyası şu parçalardan oluşur. Her biri isteğe bağlıdır.
+
+- **`hdri`**: [Poly Haven](https://polyhaven.com/hdris)'den gerçek bir mekânın 360° fotoğrafı. Sahnenin ışığını ve yansımalarını verir.
+- **`zemin`, `duvarlar`**: Poly Haven dokuları (ahşap, mermer, tuğla, beton…). Duvarlarda ay ışığı ya da gün ışığı alan pencereler olabilir, istenirse kayıtlı.
+- **`podyum`**: Karakterin durduğu yer: halı, mermer kaide ya da ışık şeritli platform.
+- **`dekor`**: Poly Haven'daki 500'den fazla 3D modelden seçilenler. Her biri için konum, dönüş ve ölçek verilir.
+- **`prosedurel`**: Kodla üretilen soyut yapılar (`kemerler`, `yuzen`).
+- **`isiklar`**: Spot, nokta, alan ve güneş ışıkları. Konum, hedef, renk ve güç ayarlanır.
+- **`sis`**: Işık hüzmeleri ve derinlik hissi için havadaki toz ya da sis.
+- **`kamera`**: `lens`, `f_stop` (arka plan bulanıklığı), `dolly` (yavaş yaklaşma), `donus` (karakterin etrafında dönme).
+- **`renk_yonetimi`**: Renk dönüşümü (`AgX`), görünüm (`Punchy`, `Medium High Contrast`) ve pozlama.
+
+Poly Haven varlıklarının hepsi **CC0** lisanslıdır, yani ticari kullanım serbesttir. İlk kullanımda `kufi/.onbellek/` klasörüne indirilirler, sonraki render'lar internet gerektirmez.
+
+**Yeni ortam eklemek:** Mevcut bir ortam dosyasını kopyala. Model, doku ve HDRI adlarını [polyhaven.com](https://polyhaven.com) adreslerinden al: `polyhaven.com/a/<ad>` adresindeki `<ad>` kısmı. Dikey kadraj dar olduğu için dekoru karakterin **arkasına** ve **iki yanına** (|x| < 2.5) diz.
+
 ## Seri fikirleri (mevcut Short'ların devamı)
 
 - **Face merdiveni, her karakterle:** Face 1 → 4 → 64 → 1K → 16K. Villager, Golem, Witch ve diğerleri için ayrı bölümler.

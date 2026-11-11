@@ -1,0 +1,18 @@
+{
+  "ad": "Neon Kemerler",
+  "konsept": "Soyut, rüya gibi bir koridor: sonsuza uzanan beyaz kemerler, neon halkalar, havada süzülen şekiller. Parlak zemin her şeyi yansıtıyor.",
+  "gok_rengi": "#0A0C1C",
+  "gok_guc": 0.6,
+  "zemin": {"renk": "#14141C", "puruzluluk": 0.12},
+  "podyum": {"tip": "kaide", "renk": "#E9E4DA", "yaricap": 1.7, "yukseklik": 0.28, "puruzluluk": 0.25,
+             "serit": "#5EF2FF", "serit_guc": 12},
+  "prosedurel": {"tip": "kemerler", "adet": 6, "renk": "#E8E2D6", "vurgu": "#FF4FA3", "isilti": 10,
+                 "yuzen_adet": 16, "isilti_orani": 0.3},
+  "isiklar": [
+    {"tip": "alan", "konum": [-3, -5, 5], "hedef": [0, 0, 1.6], "guc": 900, "renk": "#DDE6FF", "boyut": 3},
+    {"tip": "spot", "konum": [0, 6, 6], "hedef": [0, 0, 1.6], "guc": 3000, "renk": "#FF4FA3", "aci": 35, "boyut": 0.5},
+    {"tip": "nokta", "konum": [3, 1, 0.6], "guc": 300, "renk": "#5EF2FF", "boyut": 0.2}
+  ],
+  "kamera": {"lens": 45, "konum": [0, -10.5, 2.6], "hedef": [0, 0, 1.6], "f_stop": 2.8, "dolly": 0.05, "donus": 6},
+  "renk_yonetimi": {"donusum": "AgX", "gorunum": "Punchy", "pozlama": 0.2}
+}

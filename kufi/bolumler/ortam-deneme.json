@@ -1,0 +1,8 @@
+{
+  "aciklama": "Ortam denemesi: Face 1K kumaş, sinematik ortamda.",
+  "resolution": [1080, 1920],
+  "fps": 30,
+  "samples": 64,
+  "ortam": "gotik-kutuphane",
+  "clips": [{"grid": 32, "seconds": 3.5}]
+}

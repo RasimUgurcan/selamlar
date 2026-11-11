@@ -30,6 +30,9 @@ import bpy
 import bmesh
 from mathutils import Vector
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ortamlar  # noqa: E402  (sinematik ortamlar)
+
 
 # ---------------------------------------------------------------- yardımcılar
 
@@ -308,10 +311,10 @@ def grid_material(color, grid, line_color=None):
     return m
 
 
-def add_cloth(scene, clip, frames, model_height):
+def add_cloth(scene, clip, frames, model_height, stage=0.0):
     grid = int(clip["grid"])
     size = clip.get("sheet_size", 2.3)
-    z = clip.get("drop_height", model_height + 1.3)
+    z = stage + clip.get("drop_height", model_height + 1.3)
     bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid, y_subdivisions=grid, size=size,
                                     location=(0, 0, z))
     sheet = bpy.context.active_object
@@ -354,25 +357,46 @@ def add_cloth(scene, clip, frames, model_height):
 
 # ---------------------------------------------------------------- render + video
 
-def render_clip(cfg, clip, idx, out_dir, preview):
+def env_for(cfg, clip):
+    ortam = clip.get("ortam", cfg.get("ortam"))
+    if not ortam:
+        return None
+    return ortamlar.load(ortam, os.path.dirname(os.path.abspath(cfg["_path"])))
+
+
+def build_clip_scene(cfg, clip, idx, preview):
     scene = reset_scene()
     setup_render(scene, cfg, preview)
     fps = scene.render.fps
     frames = int(round(clip.get("seconds", 3.5) * fps))
     scene.frame_start, scene.frame_end = 1, frames
 
-    add_backdrop(scene, clip.get("bg", "#E3B126"))
-    add_lights_camera(scene, cfg.get("camera", {}))
+    env = env_for(cfg, clip)
     h = cfg.get("model_height", 1.9)
+    if env:
+        stage = ortamlar.build(scene, env, frames, seed=idx)
+        ortamlar.setup_camera(scene, env.get("kamera", {}), frames, focus_z=stage + h * 0.7)
+    else:
+        stage = 0.0
+        add_backdrop(scene, clip.get("bg", "#E3B126"))
+        add_lights_camera(scene, cfg.get("camera", {}))
     model = clip.get("model", cfg.get("model"))
     if model:
         base = os.path.dirname(os.path.abspath(cfg["_path"]))
         objs = import_model(scene, os.path.join(base, model), h, clip.get("model_rot_z", cfg.get("model_rot_z", 0)))
     else:
         objs = add_placeholder_figure(scene, h)
+    roots = {o.parent or o for o in objs}
+    for r in roots:  # karakteri podyumun üstüne çıkar
+        r.location.z += stage
+    bpy.context.view_layer.update()
     make_colliders(objs)
-    add_cloth(scene, clip, frames, h)
+    add_cloth(scene, clip, frames, h, stage)
+    return scene, frames, fps, env
 
+
+def render_clip(cfg, clip, idx, out_dir, preview):
+    scene, frames, fps, _ = build_clip_scene(cfg, clip, idx, preview)
     frame_dir = os.path.join(out_dir, f"klip{idx:02d}_kareler")
     shutil.rmtree(frame_dir, ignore_errors=True)
     os.makedirs(frame_dir)
@@ -384,24 +408,51 @@ def render_clip(cfg, clip, idx, out_dir, preview):
     return frame_dir, fps
 
 
+def render_still(cfg, clip, idx, out_dir, preview, frame):
+    """Tek bir 'stil karesi': simülasyonu o kareye kadar ilerletip yalnızca onu render al."""
+    scene, frames, fps, env = build_clip_scene(cfg, clip, idx, preview)
+    frame = min(frame, frames)
+    for f in range(1, frame + 1):
+        scene.frame_set(f)
+    raw = os.path.join(out_dir, f"klip{idx:02d}_kare{frame:03d}_ham.png")
+    scene.render.filepath = raw
+    bpy.ops.render.render(write_still=True)
+    height = scene.render.resolution_y * scene.render.resolution_percentage // 100
+    out = raw.replace("_ham.png", ".png")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw,
+                    "-vf", overlay_filter(cfg, clip, height, env), out], check=True)
+    os.remove(raw)
+    print(f"Stil karesi: {out}")
+    return out
+
+
 def ff_escape(text):
     return text.replace("\\", "\\\\").replace(":", "\\:").replace("'", "\u2019").replace("%", "\\%")
 
 
-def encode_clip(cfg, clip, idx, frame_dir, fps, out_dir, height):
+def overlay_filter(cfg, clip, height, env=None):
     font = find_font(cfg.get("font"))
     label = clip.get("label") or f"Face {face_label(int(clip['grid']) ** 2)}"
     wm = cfg.get("watermark", "Kufi Animation")
-    wm_color = clip.get("watermark_color") or cfg.get("watermark_color")
-    if not wm_color:  # koyu fonda açık, açık fonda koyu yazı
-        r, g, b, _ = hex_rgb(clip.get("bg", "#E3B126"))
-        wm_color = "#F2F2F2" if (0.2126 * r + 0.7152 * g + 0.0722 * b) < 0.12 else "#2A2A2A"
-    filt = (
+    wm_color = clip.get("watermark_color") or cfg.get("watermark_color") or (env or {}).get("filigran_rengi")
+    if not wm_color:
+        if env:  # sinematik ortamlar çoğunlukla koyu ve detaylı: açık yazı + gölge
+            wm_color = "#F2F2F2"
+        else:  # koyu fonda açık, açık fonda koyu yazı
+            r, g, b, _ = hex_rgb(clip.get("bg", "#E3B126"))
+            wm_color = "#F2F2F2" if (0.2126 * r + 0.7152 * g + 0.0722 * b) < 0.12 else "#2A2A2A"
+    sx, sy = max(1, round(height * 0.002)), max(1, round(height * 0.003))
+    return (
         f"drawtext=fontfile='{font}':text='{ff_escape(label)}':fontcolor=white:"
-        f"fontsize=h*0.046:x=(w-tw)/2:y=h*0.075:shadowcolor=black@0.45:shadowx={max(1, round(height * 0.002))}:shadowy={max(1, round(height * 0.003))},"
+        f"fontsize=h*0.046:x=(w-tw)/2:y=h*0.075:shadowcolor=black@0.45:shadowx={sx}:shadowy={sy},"
         f"drawtext=fontfile='{font}':text='{ff_escape(wm)}':fontcolor={wm_color}@0.85:"
         f"fontsize=h*0.019:x=(w-tw)/2:y=h*0.915"
+        + (f":shadowcolor=black@0.4:shadowx=1:shadowy=1" if wm_color.upper() in ("#F2F2F2", "#FFFFFF") else "")
     )
+
+
+def encode_clip(cfg, clip, idx, frame_dir, fps, out_dir, height):
+    filt = overlay_filter(cfg, clip, height, env_for(cfg, clip))
     out = os.path.join(out_dir, f"klip{idx:02d}.mp4")
     subprocess.run([
         "ffmpeg", "-y", "-loglevel", "error", "-framerate", str(fps),
@@ -428,11 +479,17 @@ def main():
     ap.add_argument("--onizleme", action="store_true", help="hızlı, düşük kaliteli deneme")
     ap.add_argument("--cikis", help="çıktı klasörü")
     ap.add_argument("--klip", type=int, help="yalnızca bu klibi render al (1'den başlar)")
+    ap.add_argument("--kare", type=int, help="video yerine yalnızca bu karenin görüntüsünü üret (stil karesi)")
+    ap.add_argument("--ortam", help="bölümdeki ortamı geçersiz kıl (ör. gotik-kutuphane)")
     a = ap.parse_args(argv)
 
     with open(a.bolum, encoding="utf-8") as fh:
         cfg = json.load(fh)
     cfg["_path"] = a.bolum
+    if a.ortam:
+        cfg["ortam"] = a.ortam
+        for c in cfg["clips"]:
+            c.pop("ortam", None)
     name = os.path.splitext(os.path.basename(a.bolum))[0]
     out_dir = os.path.abspath(a.cikis or os.path.join(os.path.dirname(os.path.abspath(__file__)), "cikti", name))
     os.makedirs(out_dir, exist_ok=True)
@@ -441,12 +498,17 @@ def main():
     for i, clip in enumerate(cfg["clips"], 1):
         if a.klip and i != a.klip:
             continue
+        if a.kare:
+            render_still(cfg, clip, i, out_dir, a.onizleme, a.kare)
+            continue
         frame_dir, fps = render_clip(cfg, clip, i, out_dir, a.onizleme)
         height = cfg.get("resolution", [1080, 1920])[1] // (2 if a.onizleme else 1)
         clips.append(encode_clip(cfg, clip, i, frame_dir, fps, out_dir, height))
         if not cfg.get("keep_frames"):
             shutil.rmtree(frame_dir, ignore_errors=True)
 
+    if a.kare:
+        return
     final = os.path.join(out_dir, f"{name}{'_onizleme' if a.onizleme else ''}.mp4")
     concat(clips, final)
     print(f"\nHazır: {final}")

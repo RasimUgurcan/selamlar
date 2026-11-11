@@ -1,0 +1,364 @@
+{
+  "ad": "Gotik Kütüphane",
+  "konsept": "Gece, mum ışığında antika bir kütüphane. Ay ışığı pencerelerden süzülüyor; karakter kadife bir halının üstünde.",
+  "hdri": "reading_room",
+  "hdri_guc": 0.35,
+  "zemin": {
+    "doku": "herringbone_parquet",
+    "olcek": 1.6,
+    "puruzluluk": 0.55
+  },
+  "duvarlar": {
+    "doku": "plastered_stone_wall",
+    "olcek": 3.0,
+    "ton": "#B8A890",
+    "uzaklik": 5.6,
+    "genislik": 12,
+    "yukseklik": 8,
+    "yanlar": false,
+    "pencereler": [
+      {
+        "x": 0,
+        "z": 3.9,
+        "en": 1.7,
+        "boy": 3.6,
+        "renk": "#9DB8FF",
+        "guc": 1400,
+        "manzara": "#22356E",
+        "manzara_guc": 1.8,
+        "kayit": true,
+        "dikey": 2,
+        "yatay": 4
+      }
+    ]
+  },
+  "podyum": {
+    "tip": "hali",
+    "doku": "velour_velvet",
+    "ton": "#7A1020",
+    "yaricap": 1.75,
+    "olcek": 0.6
+  },
+  "dekor": [
+    {
+      "model": "wooden_bookshelf_worn",
+      "konum": [
+        -1.85,
+        5.1,
+        0
+      ],
+      "don": 0
+    },
+    {
+      "model": "wooden_bookshelf_worn",
+      "konum": [
+        1.85,
+        5.1,
+        0
+      ],
+      "don": 0
+    },
+    {
+      "model": "vintage_grandfather_clock_01",
+      "konum": [
+        -2.5,
+        3.0,
+        0
+      ],
+      "don": 30
+    },
+    {
+      "model": "GothicCabinet_01",
+      "konum": [
+        2.6,
+        3.0,
+        0
+      ],
+      "don": -35
+    },
+    {
+      "model": "Chandelier_02",
+      "konum": [
+        0,
+        2.6,
+        4.1
+      ],
+      "don": 0
+    },
+    {
+      "model": "ArmChair_01",
+      "konum": [
+        -2.05,
+        0.9,
+        0
+      ],
+      "don": 35
+    },
+    {
+      "model": "side_table_tall_01",
+      "konum": [
+        2.0,
+        1.2,
+        0
+      ],
+      "don": 0
+    },
+    {
+      "model": "marble_bust_01",
+      "konum": [
+        2.0,
+        1.2,
+        0.86
+      ],
+      "don": -35
+    },
+    {
+      "model": "brass_candleholders",
+      "konum": [
+        1.8,
+        1.0,
+        0.86
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -2.477,
+        5.1,
+        0.38
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -1.794,
+        5.1,
+        0.38
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -2.506,
+        5.1,
+        0.67
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -2.494,
+        5.1,
+        0.96
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -1.77,
+        5.1,
+        0.96
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -2.46,
+        5.1,
+        1.28
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -1.792,
+        5.1,
+        1.28
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -2.472,
+        5.1,
+        1.66
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        -1.799,
+        5.1,
+        1.66
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.23,
+        5.1,
+        0.38
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.225,
+        5.1,
+        0.67
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.872,
+        5.1,
+        0.67
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.218,
+        5.1,
+        0.96
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.923,
+        5.1,
+        0.96
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.245,
+        5.1,
+        1.28
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.918,
+        5.1,
+        1.28
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.246,
+        5.1,
+        1.66
+      ],
+      "don": 0
+    },
+    {
+      "model": "book_encyclopedia_set_01",
+      "konum": [
+        1.876,
+        5.1,
+        1.66
+      ],
+      "don": 0
+    }
+  ],
+  "isiklar": [
+    {
+      "tip": "spot",
+      "konum": [
+        -2.5,
+        -4.5,
+        6.0
+      ],
+      "hedef": [
+        0,
+        0,
+        1.4
+      ],
+      "guc": 2200,
+      "renk": "#FFD9A8",
+      "aci": 32,
+      "boyut": 0.4
+    },
+    {
+      "tip": "nokta",
+      "konum": [
+        0,
+        2.6,
+        3.8
+      ],
+      "guc": 260,
+      "renk": "#FFB25C",
+      "boyut": 0.3
+    },
+    {
+      "tip": "nokta",
+      "konum": [
+        1.8,
+        1.0,
+        1.25
+      ],
+      "guc": 45,
+      "renk": "#FF9A3D",
+      "boyut": 0.05
+    },
+    {
+      "tip": "alan",
+      "konum": [
+        0,
+        4.0,
+        6.5
+      ],
+      "hedef": [
+        0,
+        0,
+        1.8
+      ],
+      "guc": 500,
+      "renk": "#7FA0FF",
+      "boyut": 3
+    }
+  ],
+  "kamera": {
+    "lens": 50,
+    "konum": [
+      0,
+      -10.2,
+      3.1
+    ],
+    "hedef": [
+      0,
+      0,
+      1.45
+    ],
+    "f_stop": 2.4,
+    "dolly": 0.06
+  },
+  "renk_yonetimi": {
+    "donusum": "AgX",
+    "gorunum": "Medium High Contrast",
+    "pozlama": 0.3
+  }
+}
