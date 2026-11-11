@@ -77,6 +77,11 @@ Hazır ortamlar `ortamlar/` klasöründe:
 | `gotik-kutuphane` | Gece, mum ışığında antika kütüphane: parke zemin, kitaplıklar, gotik dolap, mermer büst, avize, ay ışığı alan pencere |
 | `endustriyel-atolye` | Tuğla duvarlı eski atölye: fabrika penceresi, havada toz, fıçılar, sandıklar, matkap tezgâhı, sarkan lamba |
 | `neon-kemerler` | Soyut rüya koridoru: sonsuz kemerler, neon halkalar, havada süzülen şekiller, ayna gibi zemin |
+| `pastel-col` | **Stilize dünya.** Gün batımında pastel çöl: şeftali kumullar, nane yeşili gökyüzü, saguaro kaktüsleri, tüylü kuru çalılar |
+| `sureal-kanyon` | **Stilize dünya.** Pembe kaya sivrileri arasında bir kanyon: pofuduk bulutlar, süzülen gezegenler, turuncu toplar ve çalılar |
+| `uzay-colu` | **Stilize dünya.** Başka bir gezegende gece: lavanta kumullar, parıldayan yıldızlar, halkalı gezegen |
+
+**Stilize dünyalar** (`"dunya": {...}`, bkz. `dunyalar.py`) tamamen kodla üretilir ve **yaşar**: bulutlar akar, gezegenler döner, toplar süzülür, çalılar rüzgârda sallanır, yıldızlar parıldar. Uzaktaki her şey gökyüzü rengine karışır, bu da derinlik hissi verir. Ayarlanabilen parçalar: `gok`, `gunes`, `zemin`, `kayalar`, `kaktusler`, `calilar`, `toplar`, `bulutlar`, `gezegenler`, `tohum`. `tohum` değiştirilirse aynı tema farklı bir yerleşimle üretilir.
 
 Bir ortam dosyası şu parçalardan oluşur. Her biri isteğe bağlıdır.
 

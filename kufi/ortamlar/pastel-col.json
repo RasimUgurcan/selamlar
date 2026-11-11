@@ -1,0 +1,80 @@
+{
+  "ad": "Pastel Çöl",
+  "konsept": "Gün batımında pastel bir çöl: şeftali rengi kumullar, nane yeşili gökyüzü, dev saguaro kaktüsleri, rüzgârda sallanan kuru çalılar.",
+  "dunya": {
+    "tohum": 4,
+    "gok": {
+      "ufuk": "#F8C3AE",
+      "orta": "#F7D2C0",
+      "tepe": "#CDE6DA",
+      "guc": 1.0
+    },
+    "gunes": {
+      "guc": 2.4,
+      "renk": "#FFE1C7",
+      "yukseklik": 20,
+      "yon": 150,
+      "yumusaklik": 12,
+      "dolgu": 250,
+      "dolgu_renk": "#FFD5DF"
+    },
+    "zemin": {
+      "renk": "#F1B096",
+      "renk2": "#F6C6AC",
+      "kumul_yukseklik": 2.4,
+      "sirt": 1.8,
+      "dalgacik": 0.1,
+      "pus_uzak": 400
+    },
+    "kaktusler": {
+      "adet": 9,
+      "renk": "#7D9A6C",
+      "renk2": "#8FAA7C",
+      "sabit": [
+        [
+          -2.7,
+          3.5,
+          5.0,
+          2
+        ],
+        [
+          2.5,
+          7.0,
+          6.5,
+          3
+        ]
+      ]
+    },
+    "calilar": {
+      "adet": 18,
+      "renk": "#BCA9A6",
+      "renk2": "#9E8C8A"
+    },
+    "bulutlar": {
+      "adet": 4,
+      "hiz": 0.5,
+      "renk": "#FFF4EE",
+      "parlaklik": 0.35
+    }
+  },
+  "kamera": {
+    "lens": 35,
+    "konum": [
+      0,
+      -9,
+      2.3
+    ],
+    "hedef": [
+      0,
+      0,
+      1.6
+    ],
+    "f_stop": 4.0,
+    "dolly": 0.05
+  },
+  "renk_yonetimi": {
+    "donusum": "Standard",
+    "pozlama": 0.0
+  },
+  "filigran_rengi": "#6B4A40"
+}

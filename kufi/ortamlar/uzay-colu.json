@@ -1,0 +1,116 @@
+{
+  "ad": "Uzay Çölü",
+  "konsept": "Başka bir gezegende gece: lavanta rengi kumullar, mor kristal kayalar, parıldayan yıldızlar ve gökyüzünde dönen halkalı gezegenler.",
+  "dunya": {
+    "tohum": 12,
+    "gok": {
+      "ufuk": "#C98BC4",
+      "orta": "#5B3F8C",
+      "tepe": "#0C0A26",
+      "guc": 0.9,
+      "yildiz": true,
+      "yildiz_yogunluk": 200,
+      "yildiz_boyut": 0.07
+    },
+    "pus_rengi": "#B585C2",
+    "gunes": {
+      "guc": 2.6,
+      "renk": "#DCCBFF",
+      "yukseklik": 25,
+      "yon": 200,
+      "yumusaklik": 10,
+      "dolgu": 600,
+      "dolgu_renk": "#FF9AD5"
+    },
+    "zemin": {
+      "renk": "#C2A8E3",
+      "renk2": "#A890D6",
+      "kumul_yukseklik": 2.0,
+      "sirt": 1.4,
+      "dalgacik": 0.08
+    },
+    "kayalar": {
+      "adet": 22,
+      "renk": "#C77BC8",
+      "renk2": "#8E6BD0",
+      "min_y": 10,
+      "max_y": 200
+    },
+    "kaktusler": {
+      "adet": 5,
+      "renk": "#6CC4B6",
+      "renk2": "#8EDDCF",
+      "sabit": [
+        [
+          -2.4,
+          2.0,
+          5.4,
+          2
+        ]
+      ]
+    },
+    "toplar": {
+      "adet": 18,
+      "renkler": [
+        "#F6C4E8",
+        "#BFE7F2",
+        "#D9C8FF"
+      ],
+      "suzulme": true
+    },
+    "gezegenler": {
+      "halka": true,
+      "parlaklik": 0.35,
+      "liste": [
+        {
+          "konum": [
+            -22,
+            230,
+            82
+          ],
+          "yaricap": 22,
+          "renk": "#F6C9B8",
+          "halka": true
+        },
+        {
+          "konum": [
+            34,
+            300,
+            120
+          ],
+          "yaricap": 10,
+          "renk": "#9FD6E8"
+        },
+        {
+          "konum": [
+            10,
+            160,
+            70
+          ],
+          "yaricap": 3.5,
+          "renk": "#FFF1E6"
+        }
+      ]
+    }
+  },
+  "kamera": {
+    "lens": 35,
+    "konum": [
+      0,
+      -9,
+      2.3
+    ],
+    "hedef": [
+      0,
+      0,
+      1.6
+    ],
+    "f_stop": 4.0,
+    "dolly": 0.05,
+    "donus": 4
+  },
+  "renk_yonetimi": {
+    "donusum": "Standard",
+    "pozlama": 0.0
+  }
+}

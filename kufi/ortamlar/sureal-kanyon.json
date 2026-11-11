@@ -1,0 +1,150 @@
+{
+  "ad": "Sürreal Kanyon",
+  "konsept": "Pembe kaya sivrileri arasında bir kanyon yolu; gökyüzünde pofuduk bulutlar ve süzülen beyaz gezegenler, yerde turuncu toplar ve tüylü çalılar.",
+  "dunya": {
+    "tohum": 7,
+    "gok": {
+      "ufuk": "#F4E2D8",
+      "orta": "#B9D3E2",
+      "tepe": "#3F7FAE",
+      "guc": 1.1
+    },
+    "pus_rengi": "#F1D9D2",
+    "gunes": {
+      "guc": 2.7,
+      "renk": "#FFF0E0",
+      "yukseklik": 38,
+      "yon": 120,
+      "yumusaklik": 8,
+      "dolgu": 300,
+      "dolgu_renk": "#FFE0E6"
+    },
+    "zemin": {
+      "renk": "#F0AE9C",
+      "renk2": "#F5C2B1",
+      "kumul_yukseklik": 0.8,
+      "sirt": 0.6,
+      "dalgacik": 0.05,
+      "duz_yaricap": 4
+    },
+    "kayalar": {
+      "adet": 34,
+      "renk": "#E8737D",
+      "renk2": "#F49A92",
+      "min_y": 6,
+      "max_y": 200
+    },
+    "kaktusler": {
+      "adet": 6,
+      "renk": "#8E9E86",
+      "renk2": "#A3B09A",
+      "sabit": [
+        [
+          2.4,
+          9.0,
+          7.0,
+          3
+        ],
+        [
+          -2.5,
+          6.0,
+          5.0,
+          0
+        ]
+      ]
+    },
+    "calilar": {
+      "adet": 26,
+      "renk": "#E3964A",
+      "renk2": "#C9772F",
+      "tuy": 520
+    },
+    "toplar": {
+      "adet": 30,
+      "renkler": [
+        "#F2A07C",
+        "#F6B494",
+        "#EE8E6E"
+      ],
+      "suzulme": true
+    },
+    "bulutlar": {
+      "adet": 7,
+      "hiz": 0.8,
+      "renk": "#FFFFFF",
+      "parlaklik": 0.3
+    },
+    "gezegenler": {
+      "parlaklik": 0.25,
+      "liste": [
+        {
+          "konum": [
+            -24,
+            210,
+            70
+          ],
+          "yaricap": 20,
+          "renk": "#FBF1EC",
+          "renk2": "#EDE0DA"
+        },
+        {
+          "konum": [
+            30,
+            260,
+            92
+          ],
+          "yaricap": 13,
+          "renk": "#F3B3A8",
+          "renk2": "#E89A90"
+        },
+        {
+          "konum": [
+            -6,
+            150,
+            55
+          ],
+          "yaricap": 4,
+          "renk": "#FBEDE6"
+        },
+        {
+          "konum": [
+            18,
+            120,
+            38
+          ],
+          "yaricap": 2.5,
+          "renk": "#FBEDE6"
+        },
+        {
+          "konum": [
+            -12,
+            90,
+            26
+          ],
+          "yaricap": 1.6,
+          "renk": "#F7DCD5"
+        }
+      ]
+    }
+  },
+  "kamera": {
+    "lens": 35,
+    "konum": [
+      0,
+      -9,
+      2.3
+    ],
+    "hedef": [
+      0,
+      0,
+      1.6
+    ],
+    "f_stop": 4.0,
+    "dolly": 0.05
+  },
+  "renk_yonetimi": {
+    "donusum": "Standard",
+    "pozlama": 0.0
+  },
+  "filigran_rengi": "#6B4A40"
+}

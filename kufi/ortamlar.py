@@ -472,9 +472,13 @@ def load(name_or_dict, base_dir):
 
 def build(scene, cfg, frames, seed=0):
     """Ortamı kur. Karakterin ayak seviyesini (podyum yüksekliği) döndürür."""
-    setup_world(scene, cfg)
-    if cfg.get("zemin", {"renk": "#808080"}) is not None:
-        build_floor(scene, cfg.get("zemin", {"renk": "#808080"}))
+    if cfg.get("dunya"):  # stilize, kodla üretilen yaşayan dünya (pastel çöl, uzay...)
+        import dunyalar
+        dunyalar.build(scene, cfg["dunya"], frames, seed)
+    else:
+        setup_world(scene, cfg)
+        if cfg.get("zemin", {"renk": "#808080"}) is not None:
+            build_floor(scene, cfg.get("zemin", {"renk": "#808080"}))
     if cfg.get("duvarlar"):
         build_walls(scene, cfg["duvarlar"])
     stage = build_podium(scene, cfg["podyum"]) if cfg.get("podyum") else 0.0
