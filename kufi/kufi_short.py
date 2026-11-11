@@ -314,7 +314,10 @@ def add_cloth(scene, clip, frames, model_height):
                                     location=(0, 0, z))
     sheet = bpy.context.active_object
     sheet.name = "Kumas"
-    sheet.rotation_euler = (math.radians(clip.get("tilt_x", 4)), math.radians(clip.get("tilt_y", -3)),
+    # Az parçalı kumaş sert bir levha gibidir: eğik düşerse kafadan kayıp kadrajdan çıkar.
+    flat = grid <= 2
+    sheet.rotation_euler = (math.radians(clip.get("tilt_x", 0 if flat else 4)),
+                            math.radians(clip.get("tilt_y", 0 if flat else -3)),
                             math.radians(clip.get("spin", 12)))
     bpy.ops.object.transform_apply(location=False, rotation=True, scale=False)
     if grid >= 12:
@@ -387,10 +390,14 @@ def encode_clip(cfg, clip, idx, frame_dir, fps, out_dir, height):
     font = find_font(cfg.get("font"))
     label = clip.get("label") or f"Face {face_label(int(clip['grid']) ** 2)}"
     wm = cfg.get("watermark", "Kufi Animation")
+    wm_color = clip.get("watermark_color") or cfg.get("watermark_color")
+    if not wm_color:  # koyu fonda açık, açık fonda koyu yazı
+        r, g, b, _ = hex_rgb(clip.get("bg", "#E3B126"))
+        wm_color = "#F2F2F2" if (0.2126 * r + 0.7152 * g + 0.0722 * b) < 0.12 else "#2A2A2A"
     filt = (
         f"drawtext=fontfile='{font}':text='{ff_escape(label)}':fontcolor=white:"
         f"fontsize=h*0.046:x=(w-tw)/2:y=h*0.075:shadowcolor=black@0.45:shadowx={max(1, round(height * 0.002))}:shadowy={max(1, round(height * 0.003))},"
-        f"drawtext=fontfile='{font}':text='{ff_escape(wm)}':fontcolor={cfg.get('watermark_color', '#2A2A2A')}@0.85:"
+        f"drawtext=fontfile='{font}':text='{ff_escape(wm)}':fontcolor={wm_color}@0.85:"
         f"fontsize=h*0.019:x=(w-tw)/2:y=h*0.915"
     )
     out = os.path.join(out_dir, f"klip{idx:02d}.mp4")
