@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kufi MG: Face 1 to 10K</title>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; }
+  body { width: 1080px; height: 1920px; background: #1B1B1F; font-family: 'Inter', sans-serif; position: relative; }
+  #ghost { position: absolute; left: 0; right: 0; top: 520px; text-align: center; font-weight: 900;
+           font-size: 760px; line-height: 1; letter-spacing: -0.06em; color: rgba(255,255,255,0.20);
+           white-space: nowrap; will-change: transform; }
+  #stage { position: absolute; inset: 0; }
+  #stage canvas { display: block; }
+  #wipe { position: absolute; left: 540px; top: 1180px; width: 4600px; height: 4600px; margin: -2300px 0 0 -2300px;
+          border-radius: 50%; transform: scale(0); }
+  #hud { position: absolute; left: 0; right: 0; top: 150px; text-align: center; color: #fff; }
+  #hud .tag { display: inline-block; padding: 12px 28px; border-radius: 999px; background: #1B1B1F;
+              font-weight: 800; font-size: 34px; letter-spacing: 0.24em; }
+  #count { font-weight: 900; font-size: 200px; line-height: 1; letter-spacing: -0.045em; margin-top: 14px;
+           text-shadow: 0 10px 0 rgba(0,0,0,0.13); font-variant-numeric: tabular-nums; }
+  #dots { position: absolute; left: 0; right: 0; bottom: 210px; display: flex; justify-content: center; gap: 16px; }
+  #dots i { display: block; height: 16px; width: 16px; border-radius: 99px; background: rgba(255,255,255,0.35); }
+  #dots i.on { width: 56px; background: #fff; }
+  #wm { position: absolute; left: 0; right: 0; bottom: 120px; text-align: center; color: rgba(255,255,255,0.8);
+        font-weight: 700; font-size: 30px; letter-spacing: 0.04em; }
+  #title { position: absolute; left: 0; right: 0; top: 330px; text-align: center; color: #fff; }
+  #title .big { font-weight: 900; font-size: 168px; letter-spacing: -0.05em; line-height: 0.95; }
+  #title .small { font-weight: 800; font-size: 40px; letter-spacing: 0.28em; margin-top: 26px; opacity: 0.75; }
+  #chips { position: absolute; left: 0; right: 0; top: 640px; display: flex; justify-content: center; gap: 18px; }
+  #chips b { display: block; padding: 18px 26px; border-radius: 28px; background: #fff; color: #1B1B1F;
+             font-weight: 900; font-size: 54px; letter-spacing: -0.03em; transform: scale(0); }
+</style>
+</head>
+<body>
+  <div id="ghost"></div>
+  <div id="stage"></div>
+  <div id="wipe"></div>
+  <div id="hud"><div class="tag">FACES</div><div id="count"></div></div>
+  <div id="title"><div class="big"></div><div class="small"></div></div>
+  <div id="chips"></div>
+  <div id="dots"></div>
+  <div id="wm">Kufi Animation</div>
+<script type="importmap">
+{ "imports": {
+    "three": "./node_modules/three/build/three.module.js",
+    "three/addons/": "./node_modules/three/examples/jsm/" } }
+</script>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
