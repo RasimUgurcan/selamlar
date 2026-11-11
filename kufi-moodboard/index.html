@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kufi Moodboard Frame</title>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; }
+  body { width: 1080px; height: 1920px; background: #000; font-family: 'Inter', sans-serif; position: relative; }
+  #stage { position: absolute; inset: 0; }
+  #stage canvas { display: block; }
+  .ov { position: absolute; left: 0; right: 0; text-align: center; color: #fff; }
+  .tag { display: inline-block; padding: 12px 30px; border-radius: 999px; font-weight: 800; font-size: 34px; letter-spacing: 0.24em; }
+  .big { font-weight: 900; letter-spacing: -0.045em; line-height: 0.92; }
+  .shadow { text-shadow: 0 8px 0 rgba(0,0,0,0.18); }
+  .wm { position: absolute; left: 0; right: 0; bottom: 110px; text-align: center; color: rgba(255,255,255,0.85);
+        font-weight: 700; font-size: 30px; letter-spacing: 0.04em; text-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+  .scan { position: absolute; inset: 0; pointer-events: none;
+          background: repeating-linear-gradient(0deg, rgba(0,0,0,0.10) 0 2px, transparent 2px 5px); mix-blend-mode: multiply; }
+  .vign { position: absolute; inset: 0; pointer-events: none;
+          background: radial-gradient(ellipse at 50% 55%, transparent 55%, rgba(0,0,0,0.45) 100%); }
+</style>
+</head>
+<body>
+  <div id="stage"></div>
+  <div id="overlay"></div>
+<script type="importmap">
+{ "imports": {
+    "three": "./node_modules/three/build/three.module.js",
+    "three/addons/": "./node_modules/three/examples/jsm/" } }
+</script>
+<script type="module" src="./scenes.js"></script>
+</body>
+</html>

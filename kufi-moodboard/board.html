@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Kufi Moodboard</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { width: 1920px; height: 1200px; font-family: 'Inter', sans-serif; color: #17151F; overflow: hidden; }
+  .wrap { display: grid; grid-template-columns: 640px 1fr; gap: 56px; padding: 56px 64px; height: 1088px; }
+  .frame { width: 607px; height: 1080px; border-radius: 34px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+  .frame img { width: 100%; height: 100%; display: block; }
+  .side { display: flex; flex-direction: column; gap: 26px; min-width: 0; }
+  .kicker { font-weight: 800; letter-spacing: 0.22em; font-size: 22px; opacity: 0.6; }
+  h1 { margin: 0; font-weight: 900; font-size: 84px; letter-spacing: -0.04em; line-height: 0.95; }
+  .hook { font-weight: 800; font-size: 30px; padding: 16px 22px; border-radius: 16px; display: inline-block; }
+  .cols { display: grid; grid-template-columns: 1.25fr 1fr; gap: 26px; }
+  .card { background: rgba(255,255,255,0.72); border-radius: 22px; padding: 22px 26px; }
+  .card h3 { margin: 0 0 12px; font-size: 18px; letter-spacing: 0.18em; font-weight: 800; opacity: 0.55; }
+  .beats { display: grid; grid-template-columns: 124px 1fr; row-gap: 12px; font-size: 21px; line-height: 1.3; }
+  .beats b { font-variant-numeric: tabular-nums; font-weight: 800; }
+  .card p, .card li { font-size: 21px; line-height: 1.4; margin: 0; }
+  .card ul { margin: 0; padding-left: 22px; }
+  .pal { display: flex; gap: 12px; }
+  .pal div { flex: 1; height: 86px; border-radius: 14px; position: relative; }
+  .pal span { position: absolute; left: 10px; bottom: 8px; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.6); background: rgba(255,255,255,0.75); padding: 2px 6px; border-radius: 6px; }
+  .meta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .pill { font-size: 18px; font-weight: 800; padding: 10px 16px; border-radius: 999px; background: rgba(0,0,0,0.08); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="frame"><img id="img"></div>
+  <div class="side">
+    <div class="kicker" id="kicker"></div>
+    <h1 id="title"></h1>
+    <div><span class="hook" id="hook"></span></div>
+    <div class="cols">
+      <div class="card"><h3>HİKÂYE AKIŞI</h3><div class="beats" id="beats"></div></div>
+      <div style="display:flex;flex-direction:column;gap:26px">
+        <div class="card"><h3>NEDEN İŞE YARAR</h3><p id="why"></p></div>
+        <div class="card"><h3>SERİ POTANSİYELİ</h3><ul id="series"></ul></div>
+      </div>
+    </div>
+    <div class="card"><h3>PALET</h3><div class="pal" id="pal"></div></div>
+    <div class="meta" id="meta"></div>
+  </div>
+</div>
+<script>
+const D = {
+  A: { bg: '#E9E4FF', accent: '#FF3D7F', kicker: 'KONSEPT A · TAHMİN OYUNU', title: 'Sadece Biri Kalır',
+    hook: '“ONLY 1 SURVIVES. Guess which?”',
+    beats: [['0–2 sn', '5 Kufi sahnede, tepelerinde 5 farklı nesne. 3-2-1 sayacı: izleyici tahminini yapar.'],
+            ['2–15 sn', 'Nesneler ritimle tek tek düşer: kumaş, jöle, kaya, bal, bowling topu. Her biri gerçek fizikle.'],
+            ['15–20 sn', 'Sürpriz: beklenmeyen kişi ayakta kalır. Konfeti, zil sesi.'],
+            ['20–25 sn', '“Round 2 yarın. Tahminini yaz.” Son kare ilk kareye bağlanır.']],
+    why: 'İzleyici tahmin yaptığı için sonuna kadar izler. Herkes yorumda kendi numarasını yazar, bu da algoritmayı besler. Fizik süs değil, sonucu belirleyen şey.',
+    series: ['Round 2: meyveler (karpuz, ananas…)', 'Round 3: mobilyalar', 'İzleyicinin seçtiği nesneler'],
+    pal: ['#120F24', '#3B2370', '#FF3D7F', '#FFD23F', '#E9E2FF'],
+    meta: ['Süre: 20–25 sn', 'Ses: yarışma davulu, buzzer, zil', 'Üretim: orta'] },
+  B: { bg: '#FFE7F0', accent: '#FF5DA2', kicker: 'KONSEPT B · ABSÜRT DÜNYALAR', title: 'Ya … Olsaydı?',
+    hook: '“WHAT IF clouds were JELLY?”',
+    beats: [['0–1.5 sn', 'Soru kartı, jöle bulutların altında Kufi’nin evi.'],
+            ['1.5–10 sn', 'Jöle yağmuru: çatıda zıplar, şemsiyeye dev bir damla düşüp titrer.'],
+            ['10–18 sn', 'Sokak jöle birikintileriyle dolar, Kufi bir birikintide trambolin gibi zıplar.'],
+            ['18–22 sn', 'Güneş çıkar, jöleler eriyip gökkuşağına döner. “Sıradaki: ne olsun?”']],
+    why: 'Her bölüm yeni ve absürt bir dünya demek; “her videoya ayrı ortam” isteğinin karşılığı bu. Absürt sorular paylaşılır ve izleyiciler bir sonraki “ya … olsaydı?” fikrini yorumlarda önerir.',
+    series: ['Ya yağmur lav olsaydı?', 'Ya her şey kumaştan olsaydı?', 'Ya yerçekimi yan dönseydi?'],
+    pal: ['#7FC8F8', '#C9B6F2', '#FFC8DD', '#FF5DA2', '#9EE6B8'],
+    meta: ['Süre: 20 sn', 'Ses: “plop” damlalar, rüya gibi müzik', 'Üretim: orta-yüksek'] },
+  C: { bg: '#FFE9D6', accent: '#FF7A59', kicker: 'KONSEPT C · TIRMANAN GERİLİM', title: "1'den 1 Milyona",
+    hook: '“1 → 1,000,000 BALLS”',
+    beats: [['0–1 sn', 'Tek bir top Kufi’nin yanına düşer. Sayaç: 1.'],
+            ['1–16 sn', 'Her vuruşta sayı ikiye katlanır: 2, 4, 8 … 65,536. Oda dolar, Kufi kaçmaya çalışır.'],
+            ['16–20 sn', '1,000,000: ev patlar, kamera geri çekilir, sokak toplarla dolar.'],
+            ['20–22 sn', 'Tek bir top yuvarlanıp ilk kareye döner: sonsuz döngü.']],
+    why: 'Gerilim hiç düşmez ve sayaç izleyiciyi sona kadar tutar. Döngüyle sonuna gelen izleyici videoyu tekrar izler. Binlerce nesneyi gerçek zamanlı çizmek kodun en güçlü olduğu alan.',
+    series: ['1 → 1M jöle küp', '1 → 1M tüy', '1 → 1M lastik ördek'],
+    pal: ['#FFE9D6', '#FF3D7F', '#FFB020', '#2EC4B6', '#7B5CFF'],
+    meta: ['Süre: 20–22 sn', 'Ses: hızlanan ritim, her katlamada “tık”', 'Üretim: düşük-orta'] },
+  D: { bg: '#E3EFE6', accent: '#E0443E', kicker: 'KONSEPT D · DİZİ / KARAKTER', title: "Kufi'nin Kötü Günü",
+    hook: '“HOW DID WE GET HERE?”',
+    beats: [['0–2 sn', 'Felaketin sonu: Kufi bal ve tüy içinde, bıkkın bakıyor.'],
+            ['2–4 sn', 'VHS başa sarma efekti, zaman kodu geri akar.'],
+            ['4–20 sn', 'Zincirleme kaza: bala uzanır, kavanoz düşer, kayar, yastık patlar, tüyler yapışır.'],
+            ['20–25 sn', 'Yine aynı son kare. “EP.2 yarın.” İzleyiciyi bir sonraki bölüme bağlar.']],
+    why: 'Merak boşluğu (“bu nasıl oldu?”) en güçlü kancalardan biri. Bölümlü yapı abone kazandırır: izleyici testi değil Kufi’yi takip eder. Bir karakter markası kurar.',
+    series: ['EP.2: Kufi ve çamaşır makinesi', 'EP.3: Kufi kamp yapıyor', 'EP.4: Kufi doğum günü pastası'],
+    pal: ['#8FB8A0', '#FFD24A', '#E0443E', '#D69A68', '#F4E3C8'],
+    meta: ['Süre: 25 sn', 'Ses: VHS geri sarma, slapstick efektler', 'Üretim: yüksek'] },
+};
+const k = new URLSearchParams(location.search).get('k') || 'A', d = D[k];
+document.body.style.background = d.bg;
+document.getElementById('img').src = `out/kare_${k}.png`;
+document.getElementById('kicker').textContent = d.kicker;
+document.getElementById('title').textContent = d.title;
+const hook = document.getElementById('hook'); hook.textContent = d.hook; hook.style.background = d.accent; hook.style.color = '#fff';
+document.getElementById('beats').innerHTML = d.beats.map(([t, s]) => `<b>${t}</b><span>${s}</span>`).join('');
+document.getElementById('why').textContent = d.why;
+document.getElementById('series').innerHTML = d.series.map((s) => `<li>${s}</li>`).join('');
+document.getElementById('pal').innerHTML = d.pal.map((c) => `<div style="background:${c}"><span>${c}</span></div>`).join('');
+document.getElementById('meta').innerHTML = d.meta.map((m) => `<span class="pill">${m}</span>`).join('');
+Promise.all([document.fonts.load('900 80px Inter'), document.fonts.load('800 20px Inter'),
+  new Promise((r) => { const i = document.getElementById('img'); i.complete ? r() : i.onload = r; })]).then(() => window.ready = true);
+</script>
+</body>
+</html>
