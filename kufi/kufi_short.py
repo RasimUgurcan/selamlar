@@ -50,8 +50,10 @@ def face_label(n_faces):
         v = n_faces / 1_000_000
         return f"{v:g}M" if v != int(v) else f"{int(v)}M"
     if n_faces >= 1000:
-        v = round(n_faces / 1000, 1)
-        return f"{v:g}K"
+        v = n_faces / 1000
+        if v >= 10 or abs(v - round(v)) < 0.15:  # 1024 -> 1K, 4096 -> 4K, 16384 -> 16K
+            return f"{round(v)}K"
+        return f"{round(v, 1):g}K"
     return str(n_faces)
 
 
