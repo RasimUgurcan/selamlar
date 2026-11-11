@@ -1,0 +1,32 @@
+[submodule "kaynaklar/awesome-opus5-5-videos"]
+	path = kaynaklar/awesome-opus5-5-videos
+	url = https://github.com/yihui-dev/awesome-opus5-5-videos.git
+	shallow = true
+[submodule "kaynaklar/lemo-opuscar"]
+	path = kaynaklar/lemo-opuscar
+	url = https://github.com/lemomo-ai/lemo-opuscar.git
+	shallow = true
+[submodule "kaynaklar/pdoom-video"]
+	path = kaynaklar/pdoom-video
+	url = https://github.com/mexicat/pdoom-video.git
+	shallow = true
+[submodule "kaynaklar/PDoomVideo"]
+	path = kaynaklar/PDoomVideo
+	url = https://github.com/JohnHeibel/PDoomVideo.git
+	shallow = true
+[submodule "kaynaklar/mg-styles-15"]
+	path = kaynaklar/mg-styles-15
+	url = https://github.com/Vincentwei1021/mg-styles-15.git
+	shallow = true
+[submodule "kaynaklar/ClaudeAnimationBase"]
+	path = kaynaklar/ClaudeAnimationBase
+	url = https://github.com/JohnHeibel/ClaudeAnimationBase.git
+	shallow = true
+[submodule "kaynaklar/awesome-claude-5-5-videos"]
+	path = kaynaklar/awesome-claude-5-5-videos
+	url = https://github.com/athemeroy/awesome-claude-5-5-videos.git
+	shallow = true
+[submodule "kaynaklar/opus-video-prompts"]
+	path = kaynaklar/opus-video-prompts
+	url = https://github.com/joeseesun/opus-video-prompts.git
+	shallow = true
